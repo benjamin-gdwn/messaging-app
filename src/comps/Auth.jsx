@@ -27,7 +27,7 @@ const Auth = () => {
     e.preventDefault();
 
     const { username, password, phoneNumber, avatarURL } = form;
-    const URL = "http://localhost:5000/auth";
+    const URL = "https://benjmn-gdwin-messaging-app.herokuapp.com/auth";
 
     const {
       data: { token, userId, hashedPassword, fullName },
@@ -139,7 +139,7 @@ const Auth = () => {
             <p>
               {isSignup ? "Already have an account?" : "Don't have an account?"}
               <span onClick={switchMode}>
-                {isSignup ? "Sign In" : "Sign Up"}
+                {isSignup ? "   Sign In" : " Sign Up"}
               </span>
             </p>
           </div>

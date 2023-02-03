@@ -13,7 +13,17 @@ body {
 #root {
   height: 100%;
 }
+.str-chat__avatar .str-chat__avatar-fallback {
+  background-color: white;
+  border: 1px solid var(--primary-color-alpha);
+  color: var(--primary-color-alpha);
+  border-radius: 20px;
+}
 
+.create-channel__header p .aside{
+  font-weight: 200;
+  font-size: 0.25rem;
+}
 .auth__form-container {
   min-height: 100vh;
   display: flex;
@@ -27,7 +37,7 @@ body {
   justify-content: center;
 
   padding: 2rem;
-  background: #005fff;
+  background: var(--primary-color-alpha);
 }
 
 .auth__form-container_image {
@@ -48,15 +58,15 @@ body {
 
   padding: 2rem;
   box-shadow: 0px 1px 5px rgb(0 0 0 / 10%);
-  border-radius: 5px;
+  border-radius: 25px;
   transition: 0.8s ease;
-  background: #fff;
+  background: var(--primary-color);
 }
 
 .auth__form-container_fields-content p {
   font-size: 1.5rem;
   font-family: Arial, Helvetica, sans-serif;
-  color: #05245a;
+  color: white;
   font-weight: 900;
 }
 
@@ -70,7 +80,7 @@ body {
 
 .auth__form-container_fields-content_input label {
   margin-bottom: 0.45rem;
-  color: rgb(61, 79, 88);
+  color: white;
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0.7px;
@@ -119,12 +129,12 @@ body {
 }
 
 .auth__form-container_fields-content_button button {
-  border-radius: 4px;
-  background: #005fff;
-  border: 1px solid #005fff;
-  color: #fff;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid black;
+  color:var(--primary-color-alpha);
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: 900;
   padding: 0.7rem 1.2rem;
   outline: none;
   cursor: pointer;
@@ -132,7 +142,8 @@ body {
 }
 
 .auth__form-container_fields-content_button button:hover {
-  background: #0066ff;
+  background: var(--primary-color);
+  color: white;
 }
 
 .auth__form-container_fields-account {
@@ -150,7 +161,7 @@ body {
 }
 
 .auth__form-container_fields-account span {
-  color: #05245a;
+  color: white;
   cursor: pointer;
   font-weight: 700;
 }
@@ -192,9 +203,9 @@ body {
 .app__wrapper {
   display: flex;
   flex: 1;
-  /* height: 800px; */
+  height: 800px;
   height: 100%;
-  /* border-radius: 16px; */
+  border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 4px 0px;
 }
 
@@ -406,6 +417,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 90%;
 }
 
 .channel-list__sidebar__icon2 {
@@ -732,7 +744,7 @@ body {
 
 .user-item__name {
   font-weight: 500;
-
+  margin-left: 10px;
 }
 
 .user-item__last-active {
@@ -980,7 +992,7 @@ body {
 
 .channel-preview__wrapper {
   height: 37px;
-  padding: 10px 0;
+  padding: 10px 10px;
   display: flex;
   align-items: center;
   background: var(--primary-color);
@@ -1019,6 +1031,9 @@ body {
   width: 100%;
   text-overflow: ellipsis;
   word-break: break-all;
+}
+.channel-preview__item p{
+  margin-left: 10px;
 }
 
 .channel-preview__item.multi {

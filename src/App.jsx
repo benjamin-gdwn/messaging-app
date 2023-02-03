@@ -42,8 +42,9 @@ const App = () => {
 
   return (
     <div className="app__wrapper">
-      <Chat client={client} theme="team light">
+      <Chat client={client} theme="messaging dark">
                 <ChannelListContainer 
+                    authToken={authToken}
                     isCreating={isCreating}
                     setIsCreating={setIsCreating}
                     setCreateType={setCreateType}
