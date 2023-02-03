@@ -1,11 +1,11 @@
+
 import React, { useState } from 'react'
 import { useChatContext } from 'stream-chat-react';
 import {UserList} from './';
-import { CloseCreateChannel} from './';
+// import { CloseCreateChannel} from './';
 
 
 const ChannelNameInput = ({channelName = '', setChannelName}) => {
-
   const handleChange = (e) => {
     e.preventDefault();
 
@@ -23,10 +23,29 @@ const ChannelNameInput = ({channelName = '', setChannelName}) => {
 }
 
 const CreateChannel = ({createType, setIsCreating}) => {
-
+  const {client, setActiveChannel} = useChatContext();
+  const [selectedUsers, setSelectedUsers] = useState([client.user.id || '']);
   const [channelName, setChannelName] = useState('');
 
+  const createChannel = async (e) => {
+    e.preventDefault();
 
+    try{
+      const newChannel = await client.channel(createType, channelName, {
+        name: channelName, members: selectedUsers
+      });
+
+      // await newChannel.watch();
+
+      setChannelName('');
+      setIsCreating(false);
+      setSelectedUsers([client.userID]);
+      setActiveChannel(newChannel);
+    } 
+    catch(error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className='create-channel__container'>
@@ -34,8 +53,11 @@ const CreateChannel = ({createType, setIsCreating}) => {
         <p>{createType === 'team' ? 'Create a New Channel' : 'Send a Direct Message'}</p>
         {/* <CloseCreateChannel setIsCreating={setIsCreating}/> */}
       </div>
-      {createType === 'team' && <ChannelNameInput name={channelName} setChannelName={setChannelName} />}
-      <UserList />
+      {createType === 'team' && <ChannelNameInput channelName={channelName} setChannelName={setChannelName} />}
+      <UserList setSelectedUsers={setSelectedUsers}/>
+      <div className="create-channel__button-wrapper" onClick={createChannel}>
+        <p>{createType === 'team' ? 'Create Channel' : 'Create Message Group'}</p>
+      </div>
     </div>
   )
 }
